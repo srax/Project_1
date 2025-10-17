@@ -1,8 +1,11 @@
+[variables]
+NIXPACKS_PYTHON_VERSION = "3.10"
+
 [phases.setup]
-nixPkgs = ["python310", "python310Packages.pip"]
+nixPkgs = ["..."]
 
 [phases.install]
-cmds = ["cd locallibrary && pip install -r requirements.txt"]
+cmds = ["cd locallibrary && pip install -r requirements.txt --break-system-packages"]
 
 [phases.build]
 cmds = ["cd locallibrary && python manage.py collectstatic --noinput"]
