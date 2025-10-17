@@ -2,16 +2,10 @@
 nixPkgs = ["python310"]
 
 [phases.install]
-cmds = [
-  "cd locallibrary",
-  "pip install -r requirements.txt"
-]
+cmds = ["cd locallibrary && pip install -r requirements.txt"]
 
 [phases.build]
-cmds = [
-  "cd locallibrary",
-  "python manage.py collectstatic --noinput"
-]
+cmds = ["cd locallibrary && python manage.py collectstatic --noinput"]
 
 [start]
 cmd = "cd locallibrary && gunicorn locallibrary.wsgi --log-file -"
